@@ -1,0 +1,8 @@
+"use strict";this.default_tr=this.default_tr||{};(function(_){var window=this;
+try{
+_.na("phishing_protection");
+var kC=function(a){a=_.x(a);for(var b=a.next();!b.done;b=a.next())if(b=b.value,"childList"===b.type){b=_.x(b.addedNodes.values());for(var c=b.next();!c.done;c=b.next())c=c.value,c.nodeType===c.ELEMENT_NODE&&"input"===c.tagName.toLowerCase()&&jC(c)}},jC=function(a){[a.type,a.id,a.name,a.placeholder].some(lC)&&(a.disabled=!0)},lC=function(a){return a.toLowerCase().includes("password")};var mC;"true"===(null==(mC=document.currentScript)?void 0:mC.getAttribute("data-phishing-protection-enabled"))?(console.log("Phishing protection enabled."),_.G(window,"load",function(){for(var a=_.x(document.body.getElementsByTagName("input")),b=a.next();!b.done;b=a.next())jC(b.value);a={};(new MutationObserver(kC)).observe(document.body,(a.childList=!0,a))})):console.log("Phishing protection disabled.");
+_.pa();
+}catch(e){_._DumpException(e)}
+}).call(this,this.default_tr);
+// Google Inc.

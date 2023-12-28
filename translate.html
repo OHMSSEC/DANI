@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seleção de Idioma</title>
+</head>
+<body>
+    <h1>Escolha seu idioma</h1>
+    
+    <!-- Interface de usuário para seleção de idioma -->
+    <select id="language-selector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+    </select>
+    
+    <button id="save-language">Salvar Idioma</button>
+
+    <h2 id="current-language">Idioma Atual: English</h2>
+
+    <script>
+        // Função para definir o idioma preferido do usuário
+        function setLanguage(language) {
+            // Salve a preferência do idioma no localStorage ou em um cookie
+            localStorage.setItem('preferredLanguage', language);
+            document.getElementById('current-language').textContent = 'Idioma Atual: ' + language;
+        }
+
+        // Função para carregar o idioma preferido do usuário do localStorage ou do navegador
+        function loadPreferredLanguage() {
+            const preferredLanguage = localStorage.getItem('preferredLanguage');
+            if (preferredLanguage) {
+                document.getElementById('current-language').textContent = 'Idioma Atual: ' + preferredLanguage;
+                document.getElementById('language-selector').value = preferredLanguage;
+            }
+        }
+
+        // Evento de clique para salvar o idioma selecionado pelo usuário
+        document.getElementById('save-language').addEventListener('click', function() {
+            const selectedLanguage = document.getElementById('language-selector').value;
+            setLanguage(selectedLanguage);
+        });
+
+        // Seleção automática de idioma com base na localização do navegador
+        const userLanguage = navigator.language || navigator.userLanguage;
+        if (userLanguage) {
+            const languageCode = userLanguage.substr(0, 2).toLowerCase();
+            if (['en', 'es', 'fr'].includes(languageCode)) {
+                setLanguage(languageCode);
+            }
+        }
+
+        // Carregue o idioma preferido ao carregar a página
+        loadPreferredLanguage();
+    </script>
+</body>
+</html>
